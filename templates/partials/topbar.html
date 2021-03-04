@@ -23,7 +23,7 @@
         {% if request.user.username == 'kacaring' %}
         <a href="/admin">Admin</a>
         {% endif %}
-        <a href="#">Logud</a>
+        <a href="{% url 'logout' %}">Logud</a>
       </div>
     </li>
   </ul>
