@@ -9,6 +9,7 @@ class Ture(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=False)
   date = models.DateField(default=date.today)
   km_count = models.IntegerField(default=0)
+  km_rate = models.FloatField(default=2.0)
 
 
 class Tankning(models.Model):
@@ -25,8 +26,7 @@ class Indbetaling(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=False)
   date = models.DateField(default=date.today)
   amount = models.FloatField()
-  is_indskud = models.BooleanField(blank=True)
-  description = models.CharField(default=None, max_length=200, blank=True, null=True)
+  is_indskud = models.BooleanField(blank=True, default=False)
 
 
 class Udgift(models.Model):

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="header">Ikke registreret!</h1>
+<p class="header">{{error}}</p>
+<div class="center">
+    <a href="{% url 'dashboard' %}" class="button">Øv</a>
+</div>
+{% endblock %}

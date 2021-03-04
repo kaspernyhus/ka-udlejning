@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
+from registrations.views import get_current_km
 
 
 def login(request):
@@ -23,6 +24,4 @@ def logout(request):
 
 
 def dashboard(request):
-  return render(request, 'users/dashboard.html')
-
-
+  return render(request, 'users/dashboard.html', context={'current_km': get_current_km()})

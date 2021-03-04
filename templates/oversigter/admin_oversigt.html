@@ -9,18 +9,19 @@
       <col  style="width: 50%;">
       <col  style="width: 50%;">
   </colgroup>
-
+  {% for user in users %}
     <tr class="oversigt-tr">
       <td class="oversigt-name">
         <h2 class="oversigt-name">
-          <a href="#" class="header_link">{{user}}</a>
+          <a href="#" class="header_link">{{ user.user }}</a>
         </h2>
       </td>
       <td class="oversigt-td">
-        <p> kr.</p>
-        <p>Kørt i alt:  km.</p>
+        <p>{{ user.balance }} kr.</p>
+        <p>Kørt i alt: {{ user.user_km }} km.</p>
       </td>
     </tr>
+  {% endfor %}
   </table>
 </div>
 

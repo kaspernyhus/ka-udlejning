@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class KmPrice(models.Model):
+  class Meta:
+    verbose_name_plural = 'Km-Price'
+  price = models.FloatField(default=2.0)

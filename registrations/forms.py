@@ -73,17 +73,14 @@ class IndbetalingForm(forms.ModelForm):
     fields = (
       'date',
       'amount',
-      'description',
       'user',
     )
     widgets = {
       'date': DateInput(attrs={'class': 'input'}),
       'amount': forms.NumberInput(attrs={'class': 'input', 'pattern': "\d*"}),
-      'description': forms.Textarea(attrs={'class': 'text-input', 'rows':1, 'cols':30})
     }
     labels = {
       'date': 'Dato',
       'amount': 'Beløb',
-      'description': 'Beskrivelse',
       'user': 'Bruger'
     }
