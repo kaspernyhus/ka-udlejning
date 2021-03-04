@@ -1,6 +1,8 @@
 from django import forms
 from django.db.models import fields
 from .models import *
+from django.contrib.auth.models import User
+
 
 
 class DateInput(forms.DateInput):
@@ -8,25 +10,35 @@ class DateInput(forms.DateInput):
 
 
 class TurForm(forms.ModelForm):
+  def __init__(self, user, *args, **kwargs):
+    super(TurForm, self).__init__(*args, **kwargs)
+    if not user.is_staff:
+      del self.fields['user']
+
   class Meta:
-    model = Ture
+    model = Tur
     fields = (
       'date', 
-      'km_count', 
-      'user',
+      'odometer',
+      'user'
     )
     widgets = {
       'date': DateInput(attrs={'class': 'input'}),
-      'km_count': forms.NumberInput(attrs={'class': 'input', 'pattern': "\d*"})
+      'odometer': forms.NumberInput(attrs={'class': 'input', 'pattern': "\d*"}),
     }
     labels = {
       'date': 'Dato',
-      'km_count': 'Kilometertæller',
+      'odometer': 'Kilometertæller',
       'user': 'Bruger'
     }
 
 
 class TankningForm(forms.ModelForm):
+  def __init__(self, user, *args, **kwargs):
+    super(TankningForm, self).__init__(*args, **kwargs)
+    if not user.is_staff:
+      del self.fields['user']
+    
   class Meta:
     model = Tankning
     fields = (
@@ -46,6 +58,11 @@ class TankningForm(forms.ModelForm):
 
 
 class UdgiftForm(forms.ModelForm):
+  def __init__(self, user, *args, **kwargs):
+    super(UdgiftForm, self).__init__(*args, **kwargs)
+    if not user.is_staff:
+      del self.fields['user']
+  
   class Meta:
     model = Udgift
     fields = (
@@ -68,6 +85,11 @@ class UdgiftForm(forms.ModelForm):
 
 
 class IndbetalingForm(forms.ModelForm):
+  def __init__(self, user, *args, **kwargs):
+    super(IndbetalingForm, self).__init__(*args, **kwargs)
+    if not user.is_staff:
+      del self.fields['user']
+  
   class Meta:
     model = Indbetaling
     fields = (

@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="header">ADMIN Oversigt</h1>
+<h1 class="header">
+  <a href="{% url 'all_transactions' %}" class="header_link">ADMIN Oversigt</a>
+</h1>
 
 <div class="center">
   <table class="oversigt-table">
@@ -13,7 +15,7 @@
     <tr class="oversigt-tr">
       <td class="oversigt-name">
         <h2 class="oversigt-name">
-          <a href="#" class="header_link">{{ user.user }}</a>
+          <a href="{% url 'user_transactions' user.user.id %}" class="header_link">{{ user.user }}</a>
         </h2>
       </td>
       <td class="oversigt-td">

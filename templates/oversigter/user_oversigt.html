@@ -13,7 +13,7 @@
     <tr class="oversigt-tr">
       <td class="oversigt-name">
         <h2 class="oversigt-name">
-          <a href="#" class="header_link">{{user}}</a>
+          <a href="{% url 'user_transactions' request.user.id %}" class="header_link">{{ user }}</a>
         </h2>
       </td>
       <td class="oversigt-td">
