@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 class="header">Tur registreret!</h1>
-<p class="header">{{user}} har kørt {{km}} km.</p>
+<p class="header">{{ user.get_full_name }} har kørt {{ km }} km.</p>
 <p class="header">Samlet udgift: {{tur_pris}} kr.</p>
 <div class="center">
     <a href="{% url 'dashboard' %}" class="button">Hjem</a>

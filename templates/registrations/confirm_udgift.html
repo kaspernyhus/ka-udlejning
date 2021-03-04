@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 class="header">Anden udgift registreret!</h1>
-<p class="header">{{user}} har registreret en udgift for {{description}} på {{pris}} kr.</p>
+<p class="header">{{ user.get_full_name }} har registreret en udgift for {{ description }} på {{ pris }} kr.</p>
 <div class="center">
     <a href="{% url 'dashboard' %}" class="button">Hjem</a>
 </div>

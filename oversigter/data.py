@@ -89,3 +89,16 @@ def get_user_data(user):
 
   return {'user': user, 'user_km': user_km, 'balance': user_balance}
 
+
+def get_bank_account_balance():
+  indbetalinger = Indbetaling.objects.all()
+  indskuds = Indskud.objects.all()
+  udbetalinger = Udbetaling.objects.all()
+  bank_account_bal = 0
+  for indbetaling in indbetalinger:
+    bank_account_bal = bank_account_bal + indbetaling.amount
+  for indskud in indskuds:
+    bank_account_bal = bank_account_bal + indskud.amount
+  for udbetaling in udbetalinger:
+    bank_account_bal = bank_account_bal - udbetaling.amount
+  return bank_account_bal

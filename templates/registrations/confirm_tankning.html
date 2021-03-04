@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 class="header">Tankning registreret!</h1>
-<p class="header">{{user}} har registreret tankning for {{pris}} kr.</p>
+<p class="header">{{ user.get_full_name }} har registreret tankning for {{ pris }} kr.</p>
 <div class="center">
     <a href="{% url 'dashboard' %}" class="button">Hjem</a>
 </div>

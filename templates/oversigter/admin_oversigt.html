@@ -14,9 +14,9 @@
   {% for user in users %}
     <tr class="oversigt-tr">
       <td class="oversigt-name">
-        <h2 class="oversigt-name">
-          <a href="{% url 'user_transactions' user.user.id %}" class="header_link">{{ user.user }}</a>
-        </h2>
+        <h3 class="oversigt-name">
+          <a href="{% url 'user_transactions' user.user.id %}" class="header_link">{{ user.user.get_full_name }}</a>
+        </h3>
       </td>
       <td class="oversigt-td">
         <p>{{ user.balance }} kr.</p>
@@ -25,6 +25,8 @@
     </tr>
   {% endfor %}
   </table>
+  <br>
+  <p>Bank saldo: {{ bank_account_balance }} kr.</p>
 </div>
 
 

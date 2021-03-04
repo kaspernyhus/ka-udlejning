@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 class="header">Betaling registreret!</h1>
-<p class="header">d. {{date|date:"d M Y"}} har {{user}} indbetalt {{amount}} kr til KA-kontoen</p>
+<p class="header">d. {{date|date:"d M Y"}} har {{ user.get_full_name }} indbetalt {{amount}} kr til KA-kontoen</p>
 <div class="center">
     <a href="{% url 'dashboard' %}" class="button">Hjem</a>
 </div>
