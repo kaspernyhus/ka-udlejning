@@ -45,7 +45,7 @@
             {% for transaction in all_transactions %}
                 <tr>
                     <td>
-                      {{ transaction.0.date }}
+                      {{ transaction.0.date|date:"d M Y" }}
                     </td>
                     <td>
                       {{ transaction.0 | to_class_name }}

@@ -66,3 +66,22 @@ def user_transactions(request, id):
   return render(request, 'oversigter/user_transactions.html', context)
 
 
+
+def bank_account_oversigt(request):
+  indbetalinger = Indbetaling.objects.all()
+  indskud = Indskud.objects.all()
+  udbetalinger = Udbetaling.objects.all()
+  all_transactions = list(chain(indbetalinger, indskud, udbetalinger))
+  all_transactions = sorted(all_transactions, key=operator.attrgetter('date'))
+  # Calculate saldo
+  bank_saldo = [0]
+  for i, transaction in enumerate(all_transactions):
+    if transaction.__class__.__name__ == 'Indbetaling':
+      bank_saldo.append(bank_saldo[i]+transaction.amount)
+    elif transaction.__class__.__name__ == 'Indskud':
+      bank_saldo.append(bank_saldo[i]+transaction.amount)
+    elif transaction.__class__.__name__ == 'Udbetaling':
+      bank_saldo.append(bank_saldo[i]-transaction.amount)
+  all_transactions = list(zip(all_transactions, bank_saldo[1:]))
+  context = {'all_transactions': all_transactions}
+  return render(request, 'oversigter/bank_account.html', context)
