@@ -88,3 +88,8 @@ def bank_account_oversigt(request):
   all_transactions = reversed(all_transactions)
   context = {'all_transactions': all_transactions}
   return render(request, 'oversigter/bank_account.html', context)
+
+
+@login_required(login_url='login')
+def faq(request):
+  return render(request, 'oversigter/faq.html')

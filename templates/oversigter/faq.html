@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="center">
+  <div class="container W300px">
+    <h3 class="header">FAQ</h3>
+
+    <h4 class="header">Hvordan registrerer jeg en tur jeg har kørt?</h4>
+    <p class="header sml-text">Under "Registrer kørsel". Indtast det antal kilometer tælleren står på - appen beregner en samlet pris.</p>
+
+    <h4 class="header">Hvordan ser jeg hvad jeg skylder?</h4>
+    <p class="header sml-text">Under "Oversigt". Negativt beløb betyder du skylder penge, positivt beløb at du har penge til gode</p>
+    
+    <h4 class="header">Hvordan betaler jeg?</h4>
+    <p class="header sml-text">1) MobilePay til Kasper på 61681287. 2) Registrer det overførte beløb under "Indbetaling"</p>
+
+    <h4 class="header">Skal jeg betale for benzin?</h4>
+    <p class="header sml-text ">Nej. Det er med i kilometerprisen. Hvis du tanker bilen bliver det beløb du tanker for modregnet i det, du evt. skylder.</p>
+    
+    <h4 class="header">Hvor må bilen holde parkeret?</h4>
+    <p class="header sml-text">Bilen må holde gratis i hele indreby-zonen. Se under "Parkering" i menuen øverst til højre.</p>
+
+    <h4 class="header">Er der vejhjælp på bilen?</h4>
+    <p class="header sml-text">Ja! Hvis du skulle få brug for det og ikke kan få fat på Kasper kontakt Falck på +45 70 15 55 00.</p>
+    <p class="header sml-text">Runa Forsikring</p>
+    <p class="header sml-text">Policenummer: 1000103239250/000</p>
+
+    <h4 class="header">Er bilen forsikret?</h4>
+    <p class="header sml-text">Absolut. Skulle der opstå en akut situation kan Falck kontaktes +45 70 15 55 00.</p>
+    <p class="header sml-text">Runa Forsikring</p>
+    <p class="header sml-text">Policenummer: 1000103239250/000</p>
+
+    <h4 class="header">Jeg har købt nye vinduesviskere, fordi dem der sad på var sindssygt dårlige!</h4>
+    <p class="header sml-text ">Fedt! Du får selvfølgelig pengene tilbage for det. Register dit udlæg under "Udgift".</p>
+
+    
+
+
+  </div>
+</div>
+
+<div class="center">
+  <a href="{% url 'dashboard' %}" class="sml-button">Tilbage</a>
+</div>
+<br>
+{% endblock %}
