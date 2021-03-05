@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .data import *
@@ -45,7 +46,7 @@ def user_transactions(request, id):
   indskud = Indskud.objects.all().filter(user=id)
   udbetalinger = Udbetaling.objects.all().filter(user=id)
   all_transactions = list(chain(ture, tankninger, udgifter, indbetalinger, indskud, udbetalinger))
-  all_transactions = reversed(sorted(all_transactions, key=operator.attrgetter('date')))
+  all_transactions = sorted(all_transactions, key=operator.attrgetter('date'))
   # Calculate saldo
   user_saldo = [0]
   for i, transaction in enumerate(all_transactions):
@@ -62,7 +63,8 @@ def user_transactions(request, id):
     elif transaction.__class__.__name__ == 'Udbetaling':
       user_saldo.append(user_saldo[i]-transaction.amount)
   all_transactions = list(zip(all_transactions, user_saldo[1:]))
-  context = {'all_transactions': all_transactions}
+  all_transactions = reversed(all_transactions)
+  context = {'user': User.objects.get(id=id),'all_transactions': all_transactions}
   return render(request, 'oversigter/user_transactions.html', context)
 
 

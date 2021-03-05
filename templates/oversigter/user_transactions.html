@@ -6,7 +6,7 @@
 {% block content %}
 <div class="container">
 
-    <h1 class="header">Alle transaktioner for {{ user }}</h1>
+    <h1 class="header">Alle transaktioner for {{ user.get_full_name }}</h1>
 
     <table style="table-layout: fixed;">
         <colgroup>
