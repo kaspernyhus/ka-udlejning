@@ -74,7 +74,7 @@ def bank_account_oversigt(request):
   indskud = Indskud.objects.all()
   udbetalinger = Udbetaling.objects.all()
   all_transactions = list(chain(indbetalinger, indskud, udbetalinger))
-  all_transactions = reversed(sorted(all_transactions, key=operator.attrgetter('date')))
+  all_transactions = sorted(all_transactions, key=operator.attrgetter('date'))
   # Calculate saldo
   bank_saldo = [0]
   for i, transaction in enumerate(all_transactions):
@@ -85,5 +85,6 @@ def bank_account_oversigt(request):
     elif transaction.__class__.__name__ == 'Udbetaling':
       bank_saldo.append(bank_saldo[i]-transaction.amount)
   all_transactions = list(zip(all_transactions, bank_saldo[1:]))
+  all_transactions = reversed(all_transactions)
   context = {'all_transactions': all_transactions}
   return render(request, 'oversigter/bank_account.html', context)
