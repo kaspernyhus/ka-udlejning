@@ -22,7 +22,7 @@ def create_tur(request):
         if 'user' not in form_data:
           data_to_save.user = request.user
           user = request.user
-        # else user i selectable in form
+        # else user is selectable in form
         else:
           user = form_data['user']
         # calculate distance and price to show
@@ -51,7 +51,7 @@ def create_tankning(request):
       if 'user' not in form_data:
         data_to_save.user = request.user
         user = request.user
-      # else user i selectable in form
+      # else user is selectable in form
       else:
         user = form_data['user']
       data_to_save.save()
@@ -70,7 +70,7 @@ def create_udgift(request):
       if 'user' not in form_data:
         data_to_save.user = request.user
         user = request.user
-      # else user i selectable in form
+      # else user is selectable in form
       else:
         user = form_data['user']
       data_to_save.save()
@@ -82,7 +82,7 @@ def create_udgift(request):
       })
   form = UdgiftForm(request.user, initial={'user': request.user.id})
   context = {'form': form}
-  return render(request, 'registrations/create_tankning.html', context)
+  return render(request, 'registrations/create_udgift.html', context)
 
 
 def create_indbetaling(request):
@@ -94,7 +94,7 @@ def create_indbetaling(request):
       if 'user' not in form_data:
         data_to_save.user = request.user
         user = request.user
-      # else user i selectable in form
+      # else user is selectable in form
       else:
         user = form_data['user']
       data_to_save.save()
