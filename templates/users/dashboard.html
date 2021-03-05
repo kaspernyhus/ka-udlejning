@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
+{% load i18n %}
+{% load l10n %}
 
 {% block content %}
 
@@ -9,8 +12,10 @@
 
 
 {% if user.is_authenticated %}
+{% language 'de' %}
 <p class="header">Km-tæller:</p>
-<p class="header"><b>{{current_km}} km</b></p>
+<p class="header"><b>{{current_km|intcomma}} km</b></p>
+{% endlanguage %}
 
 
 <div class="center">

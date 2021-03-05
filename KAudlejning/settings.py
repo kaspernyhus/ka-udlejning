@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'oversigter.apps.OversigterConfig',
     'users.apps.UsersConfig',
     'registrations.apps.RegistrationsConfig',
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

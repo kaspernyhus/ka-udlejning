@@ -117,7 +117,8 @@ def register_gomore_use(request):
       data_to_save = form.save(commit=False)
       data_to_save.user = User.objects.get(id=6) # GoMore user
       data_to_save.save()
-      context = {}
+      tur_obj = Tur.objects.latest('id')
+      context = {'km': tur_obj.delta_km, 'amount': form_data['amount']}
       return render(request, 'registrations/confirm_gomore.html', context)
   gomore_form = GomoreForm()
   context = {'form': gomore_form}
