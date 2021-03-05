@@ -16,7 +16,7 @@
         <a href="{% url 'faq' %}">FAQ</a>
         <a href="https://www.kk.dk/sites/default/files/licenskort_indre_by_ib_21.10.2019.pdf">Parkering</a>
         {% if request.user.is_staff %}
-        <a href="#">Statistik</a>
+        <a href="{% url 'show_stats' %}">Statistik</a>
         <a href="/admin">Admin</a>
         {% endif %}
         <a href="{% url 'logout' %}">Logud</a>

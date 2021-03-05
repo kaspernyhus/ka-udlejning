@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="header">Statistik</h1>
+    
+    
+    <h4 class="header">Kørt siden vi overtog KA'en</h4>
+    <p class="header">{{total_km}} km</p>
+
+    <h4 class="header">Benzinpris pr. kørt km</h4>
+    <p class="header">{{benzinpris_pr_km|floatformat:2}} kr. pr. km</p>
+
+    <h4 class="header">Samlet udgift pr. kørt km (inkl. benzin)</h4>
+    <p class="header">{{pris_pr_km|floatformat:2}} kr. pr. km</p>
+
+    <h4 class="header">Samlet udgift (ekskl. benzin)</h4>
+    <p class="header">{{total_expense|floatformat:2}} kr.</p>
+
+    <h4 class="header">Brugsfordeling</h4>
+    {% for user in usage %}
+    <p class="header">{{user.username}}: {{user.usage}}%</p>
+    {% endfor %}
+</div>
+
+<div class="center">
+  <a href="{% url 'dashboard' %}" class="sml-button">Tilbage</a>
+  </div>
+{% endblock %}

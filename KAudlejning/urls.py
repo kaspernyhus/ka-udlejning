@@ -21,4 +21,5 @@ urlpatterns = [
     path('registrer/', include('registrations.urls')),
     path('', include('users.urls')),
     path('oversigt/', include('oversigter.urls')),
+    path('statistik/', include('statistik.urls'))
 ]

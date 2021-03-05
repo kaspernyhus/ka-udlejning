@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'statistik.apps.StatistikConfig',
     'oversigter.apps.OversigterConfig',
     'users.apps.UsersConfig',
     'registrations.apps.RegistrationsConfig',
