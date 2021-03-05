@@ -6,4 +6,5 @@ urlpatterns = [
   path('tankning', views.create_tankning, name='create_tankning'),
   path('udgift', views.create_udgift, name='create_udgift'),
   path('indbetaling', views.create_indbetaling, name='create_indbetaling'),
+  path('gomore', views.register_gomore_use, name='register_gomore_use'),
   ]

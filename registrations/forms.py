@@ -106,3 +106,17 @@ class IndbetalingForm(forms.ModelForm):
       'amount': 'Beløb',
       'user': 'Bruger'
     }
+
+
+class GomoreForm(forms.ModelForm):
+  class Meta:
+    model = Indbetaling
+    fields = (
+      'amount',
+    )
+    widgets = {
+      'amount': forms.NumberInput(attrs={'class': 'input', 'pattern': "\d*"})
+    }
+    labels = {
+      'amount': 'GoMore beløb'
+    }

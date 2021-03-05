@@ -30,7 +30,7 @@ def all_transactions(request):
   indskud = Indskud.objects.all()
   udbetalinger = Udbetaling.objects.all()
   all_transactions = list(chain(ture, tankninger, udgifter, indbetalinger, indskud, udbetalinger))
-  all_transactions = sorted(all_transactions[1:], key=operator.attrgetter('date')) # remove initial odometer entry
+  all_transactions = reversed(sorted(all_transactions[1:], key=operator.attrgetter('date'))) # remove initial odometer entry
   context = {'all_transactions': all_transactions}
   return render(request, 'oversigter/all_transactions.html', context)
 
@@ -45,7 +45,7 @@ def user_transactions(request, id):
   indskud = Indskud.objects.all().filter(user=id)
   udbetalinger = Udbetaling.objects.all().filter(user=id)
   all_transactions = list(chain(ture, tankninger, udgifter, indbetalinger, indskud, udbetalinger))
-  all_transactions = sorted(all_transactions, key=operator.attrgetter('date'))
+  all_transactions = reversed(sorted(all_transactions, key=operator.attrgetter('date')))
   # Calculate saldo
   user_saldo = [0]
   for i, transaction in enumerate(all_transactions):
@@ -72,7 +72,7 @@ def bank_account_oversigt(request):
   indskud = Indskud.objects.all()
   udbetalinger = Udbetaling.objects.all()
   all_transactions = list(chain(indbetalinger, indskud, udbetalinger))
-  all_transactions = sorted(all_transactions, key=operator.attrgetter('date'))
+  all_transactions = reversed(sorted(all_transactions, key=operator.attrgetter('date')))
   # Calculate saldo
   bank_saldo = [0]
   for i, transaction in enumerate(all_transactions):

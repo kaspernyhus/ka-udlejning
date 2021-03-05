@@ -31,7 +31,10 @@ def create_tur(request):
         data_to_save.delta_km = delta_km
         data_to_save.tur_price = price
         data_to_save.save()
-        return render(request, 'registrations/confirm_tur.html', context={'user': user, 'km': delta_km, 'tur_pris': price})
+        if user.id == 6:  # GoMore
+          return redirect('/registrer/gomore')
+        else:
+          return render(request, 'registrations/confirm_tur.html', context={'user': user, 'km': delta_km, 'tur_pris': price})
       else: # not a valid entry -> error
         return render(request, 'registrations/form_error.html', {'error': 'Nuværende kilometertælleraflæsning skal være højere end den seneste!'})
   form = TurForm(request.user, initial={'odometer': get_current_km(), 'user': request.user.id})
@@ -104,3 +107,18 @@ def create_indbetaling(request):
   form = IndbetalingForm(request.user, initial={'user': request.user.id})
   context = {'form': form}
   return render(request, 'registrations/create_indbetaling.html', context)
+
+
+def register_gomore_use(request):
+  if request.method == "POST":
+    form = GomoreForm(request.POST)
+    if form.is_valid():
+      form_data = form.cleaned_data
+      data_to_save = form.save(commit=False)
+      data_to_save.user = User.objects.get(id=6) # GoMore user
+      data_to_save.save()
+      context = {}
+      return render(request, 'registrations/confirm_gomore.html', context)
+  gomore_form = GomoreForm()
+  context = {'form': gomore_form}
+  return render(request, 'registrations/gomore.html', context)
