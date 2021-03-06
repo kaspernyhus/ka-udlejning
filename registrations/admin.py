@@ -14,7 +14,7 @@ class IndbetalingAdmin(admin.ModelAdmin):
   list_display = ('id', 'date', 'user', 'amount')
 
 class IndskudAdmin(admin.ModelAdmin):
-  list_display = ('id', 'date', 'user', 'amount')
+  list_display = ('id', 'date', 'user', 'amount', 'description')
 
 class UdbetalingAdmin(admin.ModelAdmin):
   list_display = ('id', 'date', 'user', 'amount', 'description')
