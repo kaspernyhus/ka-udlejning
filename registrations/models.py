@@ -45,6 +45,7 @@ class Indskud(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=False)
   date = models.DateField(default=date.today)
   amount = models.FloatField()
+  description = models.CharField(max_length=200, blank=True, null=True)
 
 
 class Udbetaling(models.Model):
