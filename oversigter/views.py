@@ -49,24 +49,31 @@ def user_transactions(request, id):
   all_transactions = sorted(all_transactions, key=operator.attrgetter('date'))
   # Calculate saldo
   user_saldo = [0]
+  user_expenses = {'Kørsel': 0, 'Tankninger': 0, 'Udgifter': 0, 'Indbetalinger': 0, 'Udbetalinger': 0, 'Indskud': 0}
   for i, transaction in enumerate(all_transactions):
     if transaction.__class__.__name__ == 'Tur':
       user_saldo.append(user_saldo[i]-transaction.tur_price)
+      user_expenses['Kørsel'] += transaction.tur_price
     elif transaction.__class__.__name__ == 'Tankning':
       user_saldo.append(user_saldo[i]+transaction.amount)
+      user_expenses['Tankninger'] += transaction.amount
     elif transaction.__class__.__name__ == 'Udgift':
       user_saldo.append(user_saldo[i]+transaction.amount)
+      user_expenses['Udgifter'] += transaction.amount
     elif transaction.__class__.__name__ == 'Indbetaling':
       user_saldo.append(user_saldo[i]+transaction.amount)
+      user_expenses['Indbetalinger'] += transaction.amount
     elif transaction.__class__.__name__ == 'Indskud':
       user_saldo.append(user_saldo[i])
+      user_expenses['Indskud'] += transaction.amount
     elif transaction.__class__.__name__ == 'Udbetaling':
       user_saldo.append(user_saldo[i]-transaction.amount)
+      user_expenses['Udbetalinger'] += transaction.amount
   all_transactions = list(zip(all_transactions, user_saldo[1:]))
   all_transactions = reversed(all_transactions)
-  context = {'user': User.objects.get(id=id),'all_transactions': all_transactions}
+  print(user_expenses)
+  context = {'user': User.objects.get(id=id), 'all_transactions': all_transactions, 'user_expenses': user_expenses}
   return render(request, 'oversigter/user_transactions.html', context)
-
 
 
 def bank_account_oversigt(request):

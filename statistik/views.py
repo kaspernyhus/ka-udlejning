@@ -34,7 +34,7 @@ def show_stats(request):
       except:
         pass
     user_usage = (user_km_total / total_km) * 100 
-    user_usages.append({'user': user, 'usage': round(user_usage,2)})
+    user_usages.append({'user': user, 'user_km': user_km_total, 'usage': round(user_usage,2)})
   
   context = {'total_km': total_km, 'benzinpris_pr_km': gas_price_pr_km, 'total_expenses': udgifter_total, 'pris_pr_km': price_pr_km, 'user_usage': user_usages[1:]}
   return render(request, 'statistik/stats.html', context)

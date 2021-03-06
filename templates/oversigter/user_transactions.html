@@ -6,8 +6,42 @@
 {% block content %}
 <div class="container">
 
-    <h1 class="header">Alle transaktioner for {{ user.get_full_name }}</h1>
+    <h2 class="header">Detaljeret oversigt for {{ user.get_full_name }}</h2>
 
+    <div class="W300px center-table">
+      <table style="table-layout: fixed;">
+        <colgroup>
+          <col  style="width: 40%;">
+          <col  style="width: 60%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>
+              Type
+            </th>
+            <th>
+              Samlet beløb
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for category, expense in user_expenses.items %}
+          <tr>
+            <td>
+              {{ category }}
+            </td>
+            <td>
+              {{ expense }} kr
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <br>
+
+    <h2 class="header">Alle transaktioner</h2>
     <table style="table-layout: fixed;">
         <colgroup>
             <col  style="width: 5%;">

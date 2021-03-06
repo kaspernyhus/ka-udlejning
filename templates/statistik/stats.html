@@ -18,9 +18,28 @@
     <p class="header">{{ total_expenses|floatformat:2 }} kr.</p>
 
     <h4 class="header">Brugsfordeling</h4>
-    {% for user in user_usage %}
-    <p class="header">{{user.user.get_full_name}}: {{user.usage}}%</p>
-    {% endfor %}
+    <div class="W300px center-table">
+      <table style="table-layout: fixed;">
+        <colgroup>
+          <col  style="width: 40%;">
+          <col  style="width: 30%;">
+          <col  style="width: 30%;">
+        </colgroup>
+        {% for user in user_usage %}
+        <tr>
+          <td>
+            {{user.user.get_full_name}}
+          </td>
+          <td>
+            {{user.user_km}} km
+          </td>
+          <td>
+            {{user.usage}}%
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
 </div>
 
 <div class="center">
