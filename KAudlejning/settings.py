@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'gtm8*_+p^(ne4#yl3__xjwb95hq$n(k&c5+d!=9$lbm_a_%+@%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'kacaring.pythonanywhere.com',
