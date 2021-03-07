@@ -43,8 +43,6 @@ def show_stats(request):
       user_km_total += tur.delta_km
     user_usage = (user_km_total / total_km) * 100 
     user_usages.append({'user': user, 'user_km': user_km_total, 'usage': round(user_usage,2)})
-  
-  
   context = {
     'total_km': total_km,
     'benzinpris_pr_km': gas_price_pr_km, 
