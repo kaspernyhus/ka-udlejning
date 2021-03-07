@@ -18,13 +18,19 @@ def show_stats(request):
   gomore_income = 0
   for indbetaling in gomore_indbetalinger:
      gomore_income += indbetaling.amount
-  gomore_income_pr_km = gomore_income / gomore_km
+  try:
+    gomore_income_pr_km = gomore_income / gomore_km
+  except:
+    gomore_income_pr_km = 0
   # Benzin price pr. km
   tankninger = Tankning.objects.all()
   tankning_total = 0
   for tankning in tankninger:
     tankning_total += tankning.amount
-  gas_price_pr_km = tankning_total / total_km_minus_gomore
+  try:
+    gas_price_pr_km = tankning_total / total_km_minus_gomore
+  except:
+    gas_price_pr_km = 0
   # Udgifter
   udgifter = Udgift.objects.all()
   udgifter_total = 0
@@ -32,7 +38,10 @@ def show_stats(request):
     udgifter_total += udgift.amount
   # Total price pr km
   total_expenses = tankning_total + udgifter_total - gomore_income
-  price_pr_km = total_expenses / total_km
+  try:
+    price_pr_km = total_expenses / total_km
+  except:
+    price_pr_km = 0
   # User usage
   users = User.objects.all()
   user_usages = []
