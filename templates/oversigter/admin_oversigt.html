@@ -19,7 +19,9 @@
         </h3>
       </td>
       <td class="oversigt-td">
+        {% if not user.user.id == 6 %}
         <p>{{ user.balance }} kr.</p>
+        {% endif %}
         <p>Kørt i alt: {{ user.user_km }} km.</p>
       </td>
     </tr>

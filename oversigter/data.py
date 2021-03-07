@@ -14,24 +14,6 @@ def get_user_data(user):
     user_km = user_km + tur.delta_km
     user_km_cost = user_km_cost + tur.tur_price
 
-
-  # km = [tur.odometer for tur in ture]       # km counter registrations
-  # users = [tur.user.id for tur in ture[1:]] # by user (omit first entry)
-  # # calculate difference between km registrations = km's travelled
-  # delta_km = [km[n]-km[n-1] for n in range(1,len(km))]
-  
-  # # Calculate total user km
-  # user_km = 0
-  # for i in range(len(users)):
-  #   if users[i] == user.id:
-  #     user_km = user_km + delta_km[i]
-
-  # # Calculate total km cost
-  # user_km_cost = 0
-  # for i in range(len(users)):
-  #   if users[i] == user.id:
-  #     user_km_cost = user_km_cost + delta_km[i]*ture[i+1].km_rate # count from index 1
-
   ##################################
   #            TANKNING            #
   ##################################
@@ -77,15 +59,15 @@ def get_user_data(user):
   ##################################
   user_balance = user_indbetaling + user_udgift_cost + user_tankning_cost - user_km_cost - user_udbetalinger
 
-  print('----------' + str(user) + '-----------')
-  print('km         ', -user_km_cost)
-  print('Tankning   ', user_tankning_cost)
-  print('Udgift     ', user_udgift_cost)
-  print('Indbetaling', user_indbetaling)
-  print('Indskud    ', user_indskud)
-  print('Udbetaling ', user_udbetalinger)
-  print('...............................')
-  print('Balance    ', user_balance)
+  # print('----------' + str(user) + '-----------')
+  # print('km         ', -user_km_cost)
+  # print('Tankning   ', user_tankning_cost)
+  # print('Udgift     ', user_udgift_cost)
+  # print('Indbetaling', user_indbetaling)
+  # print('Indskud    ', user_indskud)
+  # print('Udbetaling ', user_udbetalinger)
+  # print('...............................')
+  # print('Balance    ', user_balance)
 
   return {'user': user, 'user_km': user_km, 'balance': user_balance}
 

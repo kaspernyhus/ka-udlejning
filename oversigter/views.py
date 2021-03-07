@@ -13,7 +13,9 @@ def oversigt(request):
     User = get_user_model()
     users = User.objects.all()
     users_data = [get_user_data(user) for user in users]
-    context = {'users': users_data[1:], 'bank_account_balance': get_bank_account_balance()} # remove admin user
+    del users_data[0] # remove admin user
+    # del users_data[4] # remove GoMore user
+    context = {'users': users_data, 'bank_account_balance': get_bank_account_balance()}
     return render(request, 'oversigter/admin_oversigt.html', context)
   else:
     user_data = get_user_data(request.user)
@@ -71,11 +73,11 @@ def user_transactions(request, id):
       user_expenses['Udbetalinger'] += transaction.amount
   all_transactions = list(zip(all_transactions, user_saldo[1:]))
   all_transactions = reversed(all_transactions)
-  print(user_expenses)
   context = {'user': User.objects.get(id=id), 'all_transactions': all_transactions, 'user_expenses': user_expenses}
   return render(request, 'oversigter/user_transactions.html', context)
 
 
+@login_required(login_url='login')
 def bank_account_oversigt(request):
   indbetalinger = Indbetaling.objects.all()
   indskud = Indskud.objects.all()

@@ -1,8 +1,10 @@
 from registrations.models import Indbetaling, Tankning, Tur, Udgift
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='login')
 def show_stats(request):
   # Total km
   first_entry = Tur.objects.first()
