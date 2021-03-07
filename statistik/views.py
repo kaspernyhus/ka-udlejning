@@ -12,10 +12,7 @@ def show_stats(request):
   gomore_ture = Tur.objects.filter(user=6) # GoMore user id = 6
   gomore_km = 0
   for tur in gomore_ture:
-    try:
-      gomore_km += tur.delta_km
-    except:
-      pass
+    gomore_km += tur.delta_km
   total_km_minus_gomore = total_km - gomore_km
   gomore_indbetalinger = Indbetaling.objects.all().filter(user=6)
   gomore_income = 0
@@ -43,10 +40,7 @@ def show_stats(request):
     user_ture = Tur.objects.filter(user=user)
     user_km_total = 0
     for tur in user_ture:
-      try:
-        user_km_total += tur.delta_km
-      except:
-        pass
+      user_km_total += tur.delta_km
     user_usage = (user_km_total / total_km) * 100 
     user_usages.append({'user': user, 'user_km': user_km_total, 'usage': round(user_usage,2)})
   
